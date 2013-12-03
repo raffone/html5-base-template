@@ -2,33 +2,15 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 body
-  font-weight: 300
-  background-color: $background
 
 %h1, %h2, %h3, %h4, %h5, %h6
-  color: $brownDark
-  margin-bottom: rhythm(.25)
-  font-weight: 300
-  letter-spacing: -.03em
 
 
 // Inputs
 // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 %input
-  +opacity(.9)
-  color: $text-color
-  border-color: #e2e1d5
-  background-color: #f1f0e4
-  width: 100%
-
-  &:focus
-    background-color: #fefdf0
-    border-color: #e2e1d5
 
 %input-addon
-  color: $text-color
-  border-color: $grayLight
-  background-color: $grayLighter
 
 // Caret per Dropdown e Select
 // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -47,88 +29,25 @@ $caret-width: em(20px)
 %select
   @extend %input
 
-  select
-    color: $text-color
 
 // Buttons
 // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 %btn
-  border: 0
-  font-weight: bold
-  text-transform: uppercase
-  +adjust-font-size-to($small-size, .75)
 
-
-// Default
 %btn--default
-  background-color: $brown
-  color: #fff
 
   &:hover,
   &:focus
-    background-color: darken($brown, 8)
-    color: #FFF
+
   &.active,
   &:active
-    background-color: darken($brown, 16)
-    color: #FFF
 
 %btn--primary
-  border: 2px solid $blue
-  color: $blue
 
 %btn--secondary
-  +box-shadow(0 3px 0 #79a9b2)
-  background-color: #fff
-  color: $blue
-
-  &:hover,
-  &:focus
-    +opacity(.8)
-
-%btn--header
-  border: 2px solid $blueLightest
-  background-color: transparent
-  color: $blueLightest
-
-  &:hover,
-  &:focus
-    background-color: #fffdef
-    border-color: #fffdef
-    color: $blue
-
-%btn--form
-  border: 2px solid $brown
-  background-color: transparent
-  color: $brown
-
-  &:hover,
-  &:focus
-    background-color: $brown
-    border-color: $brown
-    color: $background
-
-%btn--menu
-  background-color: #fff
-  color: $brown
-
-  &:hover,
-  &:focus
-    color: $brown
-    background-color: #fffdef
-
 
 %btn--scripts
-  +alpha-color(black, 0.6, background)
-  color: #fff
-  cursor: pointer
-  display: block
-  text-align: center
-  text-decoration: none
-  &:hover
-    color: #fff
-    +alpha-color(black, 0.8, background)
 
 // Loader icon
 // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -213,16 +132,8 @@ $slider__btn: em(30px)
   text-align: center
 
   &.bx-prev
-    //top: auto
-    //right: 0
-    //left: auto
-    //bottom: 0
-    //background: $brown
 
   &.bx-next
-    //bottom: $slider__btn+.05
-    //top: auto
-    //background: $brown
 
 %slider__loading
   @extend %loader-ico
