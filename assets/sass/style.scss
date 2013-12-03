@@ -1,0 +1,29 @@
+/*!
+  Theme Name: Hotel Garden
+  Theme URI:
+  Description: Theme by Muse Comunicazione
+  Version: 1.0
+  Author URI: http://www.musecomunicazione.it
+  Text Domain: Muse v1.0
+*/
+
+
+// Variabili
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+@import "vars";
+
+// Framework
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+@import "rapido";
+
+// Sprites
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+@import "s/*.png";
+@include all-s-sprites;
+
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+@import "rapido-styles";
+@import "objects/*";
+@import "modules/*";

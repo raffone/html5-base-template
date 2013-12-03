@@ -1,0 +1,89 @@
+a, button, .btn, i, em, strong
+  +e(transition)
+
+ul
+  margin-left: 0
+  list-style-position: outside
+
+[class*="leader"], .leader
+  +adjust-font-size-to($h4-size, 1.25)
+  color: $brown
+  margin-bottom: rhythm(.5)
+  text-transform: uppercase
+
+
+[class*="subtitle"], .subtitle
+  +adjust-font-size-to($base-font-size)
+  color: $brown
+  font-weight: bold
+  text-transform: uppercase
+  margin-bottom: 1em
+
+.hotelbid
+  border-top: 1px solid $blueLight
+  padding-top: rhythm(1.2)
+  text-align: center
+  clear: both
+  i
+    margin-right: 1em
+
+  .iframe
+    display: none
+
+.dotdotdot p
+  height: rhythm(2)
+
+%card
+  background-color: rgba(#fdfbef, .95)
+  border-bottom: 3px solid $blue
+
+  +media(lap-and-up)
+    +columns(4)
+
+    & + & + &
+      +omega
+
+
+%card__title
+  text-align: center
+  margin-bottom: 0em
+  a
+    color: $brownDark
+
+%card__subtitle
+  text-align: center
+
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+%offers__single--attr
+  +e(transition)
+  background: $blue
+  color: $blueLightest
+  text-align: center
+
+  *
+    display: block
+
+  .price
+    height: 125px
+    border-bottom: 2px solid $backgroundDark
+    padding: 1em 0em 0em 0em
+
+    strong
+      +adjust-font-size-to($h1-size)
+      font-weight: 300
+
+    span
+      letter-spacing: 1px
+      margin-top: -10px
+
+  em
+    @extend %offer__label
+
+%offer__label
+  +adjust-font-size-to($small-size)
+  font-style: normal
+  height: 50px
+  padding: .7em 1em 0em 1em
+  text-transform: uppercase
+

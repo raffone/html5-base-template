@@ -1,0 +1,38 @@
+// Base
+// ----------------------------------------------------------------------------
+
+[role="main"]
+  position: relative
+
+  .w > section,
+  .w > aside,
+  section > .w
+    padding-top: rhythm(4)
+    padding-bottom: rhythm(4)
+
+[role="contentinfo"] .w
+  padding-top: rhythm(3)
+  padding-bottom: rhythm(3)
+
+
+// Disposizione Dekstop
+// ----------------------------------------------------------------------------
+
++media(desk)
+
+// Disposizione Mobile
+// --------------------------------------------------------------------------
+
++media(portable)
+  [role="main"]
+    .w > section,
+    .w > aside,
+    section > .w
+      padding-top: rhythm(1)
+      padding-bottom: rhythm(1)
+
+  [role="contentinfo"] .w
+    padding-top: rhythm(1)
+    padding-bottom: rhythm(1)
+
+

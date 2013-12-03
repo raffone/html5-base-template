@@ -1,0 +1,247 @@
+// Titles
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+body
+  font-weight: 300
+  background-color: $background
+
+%h1, %h2, %h3, %h4, %h5, %h6
+  color: $brownDark
+  margin-bottom: rhythm(.25)
+  font-weight: 300
+  letter-spacing: -.03em
+
+
+// Inputs
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+%input
+  +opacity(.9)
+  color: $text-color
+  border-color: #e2e1d5
+  background-color: #f1f0e4
+  width: 100%
+
+  &:focus
+    background-color: #fefdf0
+    border-color: #e2e1d5
+
+%input-addon
+  color: $text-color
+  border-color: $grayLight
+  background-color: $grayLighter
+
+// Caret per Dropdown e Select
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+$caret-width: em(20px)
+
+%caret
+  min-width: $caret-width
+  &:after
+    +triangle($caret-width, $blue, down)
+    margin-top: -($caret-width / 4)
+
+// Selects
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+%select
+  @extend %input
+
+  select
+    color: $text-color
+
+// Buttons
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+%btn
+  border: 0
+  font-weight: bold
+  text-transform: uppercase
+  +adjust-font-size-to($small-size, .75)
+
+
+// Default
+%btn--default
+  background-color: $brown
+  color: #fff
+
+  &:hover,
+  &:focus
+    background-color: darken($brown, 8)
+    color: #FFF
+  &.active,
+  &:active
+    background-color: darken($brown, 16)
+    color: #FFF
+
+%btn--primary
+  border: 2px solid $blue
+  color: $blue
+
+%btn--secondary
+  +box-shadow(0 3px 0 #79a9b2)
+  background-color: #fff
+  color: $blue
+
+  &:hover,
+  &:focus
+    +opacity(.8)
+
+%btn--header
+  border: 2px solid $blueLightest
+  background-color: transparent
+  color: $blueLightest
+
+  &:hover,
+  &:focus
+    background-color: #fffdef
+    border-color: #fffdef
+    color: $blue
+
+%btn--form
+  border: 2px solid $brown
+  background-color: transparent
+  color: $brown
+
+  &:hover,
+  &:focus
+    background-color: $brown
+    border-color: $brown
+    color: $background
+
+%btn--menu
+  background-color: #fff
+  color: $brown
+
+  &:hover,
+  &:focus
+    color: $brown
+    background-color: #fffdef
+
+
+%btn--scripts
+  +alpha-color(black, 0.6, background)
+  color: #fff
+  cursor: pointer
+  display: block
+  text-align: center
+  text-decoration: none
+  &:hover
+    color: #fff
+    +alpha-color(black, 0.8, background)
+
+// Loader icon
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+$loader-ico-size: 44px
+
+%loader-ico
+  background: url("//cdn.jsdelivr.net/wp-advanced-ajax-page-loader/2.5.12/loaders/SMALL%20-%20Spinning%20Arrows.gif") center center no-repeat
+
+// Modals
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// Buttons
+%modal__btn
+  @extend %btn--scripts
+  +square($modal-btn-size)
+  line-height: $modal-btn-size
+
+%modal__close
+  $offset: -$modal-btn-size
+  +position(absolute, $offset 0.5em 0 0)
+
+%modal__close--alt
+  +position(absolute, 0px 0px 0 0)
+  background-color: transparent
+  color: $link-color
+  &:hover
+    color: $link-color-hover
+
+// Other styles
+%modal__overlay
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiqAcAAIgAgoGu+rEAAAAASUVORK5CYII=")
+
+
+%modal__skin
+  +box-shadow(0 4px 10px rgba(0, 0, 0, 0.4))
+  +border-radius($base-border-radius)
+  background: #fff
+
+  .fancybox-close:after
+    +icon-font(\f00d)
+  .fancybox-prev span:after
+    +icon-font(\f053)
+  .fancybox-next span:after
+    +icon-font(\f054)
+  .btnPrev:after
+    +icon-font(\f04a)
+  .btnNext:after
+    +icon-font(\f051)
+  .btnPlay:after
+    +icon-font(\f04b)
+  .btnPlayOn:after
+    +icon-font(\f04c)
+  .btnToggle:after
+    +icon-font(\f065)
+  .btnToggleOn:after
+    +icon-font(\f066)
+  .btnClose:after
+    +icon-font(\f00d)
+
+
+%modal__skin
+  +box-shadow(0 4px 10px rgba(0, 0, 0, 0.4))
+  +border-radius($base-border-radius)
+  background: #fff
+
+%modal__loading
+  margin-top: -($loader-ico-size / 2)
+  margin-left: -($loader-ico-size / 2)
+  +opacity(0.8)
+  div
+    @extend %loader-ico
+    +square($loader-ico-size)
+
+// Slider
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+$slider__btn: em(30px)
+
+// Buttons
+%slider__btn
+  +square($slider__btn)
+  line-height: $slider__btn
+  text-align: center
+
+  &.bx-prev
+    //top: auto
+    //right: 0
+    //left: auto
+    //bottom: 0
+    //background: $brown
+
+  &.bx-next
+    //bottom: $slider__btn+.05
+    //top: auto
+    //background: $brown
+
+%slider__loading
+  @extend %loader-ico
+  +alpha-color(black, 0.6)
+  min-height: $loader-ico-size
+
+// Pagination
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+%pagination_btn
+  +border-radius(rhythm(2))
+  +square(rhythm(2))
+  background: $blue
+  margin: 0 5px
+  color: #fff
+  font-weight: bold
+  border: 0
+
+  &:hover, &.active
+    background: $blue
+
+%pagination_btn-active
+  background: $blue
