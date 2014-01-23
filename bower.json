@@ -1,0 +1,24 @@
+{
+  "name": "base",
+  "authors": [
+    "Raffaele Rasini <raffaele.rasini@gmail.com>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "rapido": ">=0.1.5",
+    "easytabs": "~3.2.0",
+    "fancybox": "~2.1.5",
+    "html5shiv": "~3.7.0",
+    "respond": "~1.4.2",
+    "selectivizr": "~1.0.2",
+    "jquery.dotdotdot": "~1.6.12",
+    "bxSlider": "*",
+    "jquery-backstretch": "~2.0.4"
+  }
+}

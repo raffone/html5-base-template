@@ -1,0 +1,392 @@
+// Titles
+
+%h1
+
+%h2
+
+%h3
+
+%h4
+
+%h5
+
+%h6
+
+// Inputs and Selects
+
+%input
+  border-color: $gray
+  background-color: $grayLighter
+  +box-shadow(inset 0 1px 0 white)
+  +background-image(linear-gradient(bottom, $white 0%, $grayLighter 100%))
+  &:focus
+    +background-image(linear-gradient(bottom, $white 50%, $grayLighter 100%))
+
+%input-addon
+  color: $text-color
+  border-color: $grayLight
+  background-color: $grayLighter
+
+%select
+  @extend %input
+
+// Buttons
+
+// Default
+%btn--default
+  color: $text-color
+  border-color: $gray
+  background-color: $grayLight
+  +box-shadow(inset 0 1px 0 rgba(255, 255, 255, 0.5))
+  +background-image(linear-gradient(bottom, $grayLight 0%, $grayLighter 100%))
+  // Hover/focus state
+  &:hover,
+  &.hover,
+  &:focus
+    color: inherit
+    +background-image(linear-gradient(bottom, $grayLight 0%, $white 100%))
+  // Active state
+  &.active,
+  &:active
+    +background-image(linear-gradient(top, $grayLight 0%, $grayLighter 100%))
+
+%btn__disabled
+  color: $grayLight
+  border-color: $grayLight
+  background: #FFF
+
+%btn__current
+  +box-shadow(0 0 0)
+  background: $gray
+  color: $white
+
+%btn--primary
+  color: #fff
+  border-color: darken(green, 10%)
+  background-color: green
+  +background-image(linear-gradient(bottom, darken(green, 10%) 0%, green 100%))
+  // Hover/focus state
+  &:hover,
+  &.hover,
+  &:focus
+    color: #fff
+    +background-image(linear-gradient(bottom, darken(green, 10%) 0%, lighten(green, 6) 100%))
+  // Active state
+  &.active,
+  &:active
+    +background-image(linear-gradient(top, darken(green, 10%) 0%, green 100%))
+
+%btn--secondary
+  color: #fff
+  border-color: darken(red, 10%)
+  background-color: red
+  +background-image(linear-gradient(bottom, darken(red, 10%) 0%, red 100%))
+  // Hover/focus state
+  &:hover,
+  &.hover,
+  &:focus
+    color: #fff
+    +background-image(linear-gradient(bottom, darken(red, 10%) 0%, lighten(red, 20) 100%))
+  // Active state
+  &.active,
+  &.hover,
+  &:active
+    +background-image(linear-gradient(bottom, darken(red, 10%) 0%, red 100%))
+
+// Generic style for buttons For the scripts
+%btn--scripts
+  +alpha-color(black, 0.6, background)
+  color: #fff
+  cursor: pointer
+  display: block
+  text-align: center
+  text-decoration: none
+  &:hover
+    color: #fff
+    +alpha-color(black, 0.8, background)
+
+// Captions
+
+%caption
+  +alpha-color(black, 0.8, background)
+  color: #fff
+  padding: $captions-padding
+
+// Labels (Badges & Pills)
+
+%pill
+  +alpha-color(black, 0.35)
+  color: $white
+
+// Dropdowns
+
+%dropdown
+  background: $grayLighter
+  border-color: $gray
+  .divider
+    +nav-divider($gray)
+    margin-top: -1px
+  > li > a,
+  > li > label
+    border-bottom: 1px dotted $gray
+  > li > a:hover,
+  > li > a:focus
+    text-decoration: none
+    background-color: $grayLight
+
+%dropdown--open
+  background: $grayLighter
+  border-bottom: 1px solid $grayLighter
+
+// Tables
+
+%table--bordered
+  thead
+    th, td
+      background-color: $gray
+      color: #FFF
+  tbody
+    td
+      border-bottom: 1px solid $grayLight
+
+%table--striped
+  background-color: $grayLighter
+
+%table--hover
+  background-color: $grayLighter
+
+%table--sortable
+  thead
+    th
+      &:hover
+        background: $grayDark
+      &.sorting-asc:after
+        content: "\25BC"
+      &.sorting-desc:after
+        content: "\25B2"
+
+// Navs
+
+%nav--btn
+
+%nav--btn__hover
+  background-color: $grayLighter
+
+%nav--btn__active
+  color: $white
+  background-color: $link-color
+
+%nav--btn__disabled
+  color: $grayLight
+
+// Breadcrumbs
+
+%breadcrumbs
+  > li
+    &:after
+      color: #ccc
+      content: "›"
+      padding: 0 10px
+    &:last-child
+      &:after
+        content: ""
+        padding-right: 0
+
+%breadcrumbs__current
+  color: $grayLight
+
+// Pagination
+
+%pagination--btn
+  @extend %btn--default
+
+%pagination--btn__hover
+  @extend %btn--default:hover
+
+%pagination--btn__active
+
+%pagination--btn__current
+  @extend %btn__current
+
+%pagination--btn__disabled
+  @extend %btn__disabled
+
+// Pager
+
+%pager--btn
+  @extend %btn--default
+
+%pager--btn__hover
+
+%pager--btn__active
+
+%pager--btn__disabled
+  @extend %btn__disabled
+
+// Modals
+
+// Buttons
+
+.btnPlay:after
+  +icon-font(\f04b)
+
+.btnPlayOn:after
+  +icon-font(\f04c)
+
+.btnToggle:after
+  +icon-font(\f065)
+
+.btnToggleOn:after
+  +icon-font(\f066)
+
+.btnPrev:after
+  +icon-font(\f04a)
+
+.btnNext:after
+  +icon-font(\f051)
+
+.btnClose:after
+  +icon-font(\f00d)
+
+.fancybox-close:after
+  +icon-font(\f00d)
+
+.fancybox-prev
+  span:after
+    +icon-font(\f053)
+
+.fancybox-next
+  span:after
+    +icon-font(\f054)
+
+%modal__btn
+  @extend %btn--scripts
+  +square($modal-btn-size)
+  line-height: $modal-btn-size
+
+%modal__close
+  $offset: -$modal-btn-size
+  +position(absolute, $offset 0.5em 0 0)
+  color: #CCCCCC
+  &:hover
+    color: #FFFFFF
+
+%modal__btnbar-size
+  +size($modal-btn-size, $modal-btn-size * 5)
+
+// Other styles
+%modal__overlay
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiqAcAAIgAgoGu+rEAAAAASUVORK5CYII=")
+
+%modal__skin
+  +box-shadow(0 4px 10px rgba(0, 0, 0, 0.4))
+  +border-radius($base-border-radius)
+  background: #fff
+
+%modal__nav
+  margin-top: 0 - $modal-btn-size / 2
+
+%modal__caption
+  @extend %caption
+
+%modal__loading
+  margin-top: -($loader-ico-size / 2)
+  margin-left: -($loader-ico-size / 2)
+  +opacity(0.8)
+  div
+    @extend %loader-ico
+    +square($loader-ico-size)
+
+// Sliders
+
+// Buttons
+%slider__btn
+  @extend %btn--scripts
+  +square($slider-btn-size)
+  line-height: $slider-btn-size
+  margin-top: -($slider-btn-size / 2)
+  &.bx-prev i:after
+    +icon-font(\f053)
+  &.bx-next i:after
+    +icon-font(\f054)
+
+// Pager
+%slider__pager
+  +position(absolute, 0 0 -30px 0)
+  padding-top: 20px
+  .bx-pager-item
+    a
+      +border-radius(5px)
+      +square(10px)
+      +hide-text
+      background: $grayLight
+      margin: 0 5px
+      &:hover, &.active
+        background: $gray
+
+// Other styles
+%slider__caption
+  @extend %caption
+
+%slider__loading
+  @extend %loader-ico
+  +alpha-color(black, 0.6)
+  min-height: $loader-ico-size
+
+// Tabs
+
+%tab__nav
+
+%tab__btn
+  background: $grayLighter
+  border: solid 1px $grayLight
+  border-bottom: none
+
+%tab__btn__hover
+  background: $grayLighter
+  border: solid 1px $grayLight
+  border-bottom: none
+
+%tab__btn__current
+  border-color: $gray
+  &:after
+    background: $grayLighter
+
+%tab__container
+  border: solid 1px $gray
+  background: $grayLighter
+
+// Alerts
+
+%alert
+  background-color: $grayLighter
+  border: 1px solid $grayLight
+
+// OffCanvas Nav
+
+%nav--offcanvas
+  background-color: $grayDark
+  padding: $wrapper-padding
+  color: $white
+  a
+    color: $white
+
+%nav--offcanvas__dim
+  background: rgba(0, 0, 0, 0.2)
+
+%nav--offcanvas__toggle
+  @extend .btn
+  span
+    @extend .visuallyhidden
+  &:before
+    +icon-font(\f0c9)
+
+// Shared
+
+%caret
+  &:after
+    +icon-font(\f078)
+
+%loader-ico
+  background: url("//cdn.jsdelivr.net/wp-advanced-ajax-page-loader/2.5.12/loaders/SMALL%20-%20Spinning%20Arrows.gif") center center no-repeat
+
