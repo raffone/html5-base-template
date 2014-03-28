@@ -1,18 +1,63 @@
 module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-usemin');
+  grunt.loadNpmTasks("grunt-contrib-concat");
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-livescript');
+  grunt.loadNpmTasks('grunt-notify');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+
+  var options = {
+    IE: [
+    'bower_components/html5shiv/dist/html5shiv.js',
+    'bower_components/selectivizr/selectivizr.js',
+    'bower_components/respond/dest/respond.src.js',
+    'bower_components/pickadate/lib/legacy.js'
+  ], VENDOR: [
+    'bower_components/jquery/jquery.js',
+    'bower_components/bxSlider/jquery.bxslider.js',
+    'bower_components/easytabs/lib/jquery.easytabs.js',
+    'bower_components/fancybox/source/jquery.fancybox.js',
+    'bower_components/jquery-backstretch/jquery.backstretch.js',
+    'bower_components/jquery.dotdotdot/src/js/jquery.dotdotdot.js',
+    'bower_components/rapido/dist/js/rapido.js',
+  ], MODERNIZR: [
+    'teamofdrivers/static/js/vendor/modernizr/modernizr.js'
+  ], APP: [
+    'assets/js/app.js'
+  ]};
 
   grunt.initConfig({
 
-    compass: {
-      dist: {
+    sass: {
+      min: {
         options: {
-          config: 'config.rb',
-          importPath: '../../../frameworks/rapido/stylesheets/'
+          style: 'compressed',
+          require: ['sass-globbing', 'sass-media_query_combiner']
+        },
+        files: {
+          'assets/css/style.css': 'assets/sass/style.sass',
         }
+      }
+    },
+
+    concat: {
+      ie: {
+        src: options.IE,
+        dest: 'assets/js/ie.min.js'
+      },
+      vendor: {
+        src: options.VENDOR,
+        dest: 'assets/js/vendor.min.js'
+      },
+      modernizr: {
+        src: options.MODERNIZR,
+        dest: 'assets/js/modernizr.min.js'
+      },
+      app: {
+        src: options.APP,
+        dest: 'assets/js/app.min.js'
       }
     },
 
@@ -24,33 +69,21 @@ module.exports = function(grunt) {
       },
       all: {
         files: {
-          'assets/js/ie.min.js': [
-            'assets/js/vendor/html5shiv/dist/html5shiv.js',
-            'assets/js/vendor/selectivizr.js',
-            'assets/vendor/respond/dest/respond.js',
-          ],
-          'assets/js/vendor.min.js': [
-            'assets/js/vendor/jquery/jquery.js',
-            'assets/js/vendor/bxSlider/jquery.bxslider.js',
-            'assets/js/vendor/easytabs/lib/jquery.easytabs.js',
-            'assets/js/vendor/fancybox/source/jquery.fancybox.js',
-            'assets/js/vendor/jquery-backstretch/jquery.backstretch.js',
-            'assets/js/vendor/jquery.dotdotdot/src/js/jquery.dotdotdot.js',
-            'assets/js/vendor/rapido/dist/js/rapido.js',
-          ],
-          'assets/js/app.min.js': ['assets/js/app.js']
+          'assets/js/ie.min.js': options.IE,
+          'assets/js/vendor.min.js': options.VENDOR,
+          'assets/js/modernizr.min.js': options.MODERNIZR,
+          'assets/js/app.min.js': options.APP
         }
       }
     },
 
     watch: {
       options: {
-        interrupt: false,
         livereload: true
       },
       css: {
         files: ['**/*.sass', '**/*.scss', '**/*.png' ],
-        tasks: ['compass']
+        tasks: ['sass']
       },
       php: {
         files: ['*.php', '*.html', '**/*.php', '**/*.html' ]
