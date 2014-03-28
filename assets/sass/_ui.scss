@@ -1,0 +1,709 @@
+/*
+
+Titles
+
+    %h1                             # For <h1>
+    %h2                             # For <h2>
+    %h3                             # For <h3>
+    %h4                             # For <h4>
+    %h5                             # For <h5>
+    %h6                             # For <h6>
+
+Styleguide 32.1
+
+*/
+
+    %h1 {}
+    %h2 {}
+    %h3 {}
+    %h4 {}
+    %h5 {}
+    %h6 {}
+
+/*
+
+Inputs and Selects
+
+    %form__label                    # For the <label>
+    %form__input                    # For the <input> and <textarea>
+    %form__addon                    # For the addon texts in forms
+    %form__select                   # Custom select style, by default it use %input
+    %form__suggest                  # Styling for suggest dropdowns
+
+    %form__picker                   # Styling for date picker
+    %form__picker--hover            # For :hover state of links
+    %form__picker--highlighted      # For selected day
+    %form__picker--disabled         # For disabled days
+    %picker__nav--prev              # Character to use for the "prev" arrow
+    %picker__nav--next              # Character to use for the "next" arrow
+
+Styleguide 32.2
+
+*/
+
+    %form__label {}
+
+    %form__input {
+        border-color: $gray;
+        background-color: $grayLighter;
+        box-shadow: inset 0 1px 0 #fff;
+        @include background-image(linear-gradient(bottom, $white 0%, $grayLighter 100%));
+
+        &:focus {
+            @include background-image(linear-gradient(bottom, $white 50%, $grayLighter 100%));
+        }
+    }
+
+    %form__addon {
+        color: $text-color;
+        border-color: $grayLight;
+        background-color: $grayLighter;
+    }
+
+    %form__select {
+        @extend %form__input;
+    }
+
+    %form__suggest {
+        @include opacity(0);
+        background-color: $gray;
+
+      &.open {
+          @include opacity(1);
+      }
+
+      a {
+          color: white;
+      }
+
+    }
+
+    %form__picker {
+        border-color: $gray;
+        background-color: $white;
+        box-shadow: 0 6px 18px 1px rgba(0, 0, 0, 0.12);
+    }
+
+    %form__picker--hover {
+      background: lighten($link-color, 50);
+    }
+
+    %form__picker--highlighted {
+      background: $link-color;
+      color: $white;
+    }
+
+    %form__picker--disabled {
+      background: $grayLighter;
+      color: $grayLight;
+    }
+
+    %picker__nav--prev:before { content: "◀"; }
+    %picker__nav--next:before { content: "▶"; }
+
+/*
+
+Buttons
+
+    %btn--default                   # Default button colors
+    %btn--primary                   # Default color for primary buttons
+    %btn--secondary                 # Default color for secondary buttons
+    %btn--scripts                   # Default buttons color for buttons used in scripts (slides, modals)
+
+    %btn__disabled                  # For disabled button
+    %btn__current                   # For current button (es. used in Pagination)
+
+Styleguide 32.3
+
+*/
+
+    // Default
+    %btn--default {
+        color: $text-color;
+        border-color: $gray;
+        background-color: $grayLight;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+        @include background-image(linear-gradient(bottom, $grayLight 0%, $grayLighter 100%));
+
+        // Hover/focus state
+        &:hover,
+        &.hover,
+        &:focus {
+            color: inherit;
+            @include background-image(linear-gradient(bottom, $grayLight 0%, $white 100%));
+        }
+
+        // Active state
+        &.active,
+        &:active {
+            @include background-image(linear-gradient(top, $grayLight 0%, $grayLighter 100%));
+        }
+    }
+
+    %btn__disabled {
+        color: $grayLight;
+        border-color: $grayLight;
+        background: #FFF;
+    }
+
+    %btn__current {
+        box-shadow: 0 0 0;
+        background: $gray;
+        color: $white;
+    }
+
+    %btn--primary {
+        color: #fff;
+        border-color: darken(green, 10%);
+        background-color: green;
+        @include background-image(linear-gradient(bottom, darken(green, 10%) 0%, green 100%));
+
+        // Hover/focus state
+        &:hover,
+        &.hover,
+        &:focus {
+            color: #fff;
+            @include background-image(linear-gradient(bottom, darken(green, 10%) 0%, lighten(green, 6) 100%));
+        }
+
+        // Active state
+        &.active,
+        &:active {
+            @include background-image(linear-gradient(top, darken(green, 10%) 0%, green 100%));
+        }
+    }
+
+    %btn--secondary {
+        color: #fff;
+        border-color: darken(red, 10%);
+        background-color: red;
+        @include background-image(linear-gradient(bottom, darken(red, 10%) 0%, red 100%));
+
+        // Hover/focus state
+        &:hover,
+        &.hover,
+        &:focus {
+            color: #fff;
+            @include background-image(linear-gradient(bottom, darken(red, 10%) 0%, lighten(red, 20) 100%));
+        }
+
+        // Active state
+        &.active,
+        &.hover,
+        &:active {
+            @include background-image(linear-gradient(bottom, darken(red, 10%) 0%, red 100%));
+        }
+    }
+
+    // Generic style for buttons For the scripts
+    %btn--scripts {
+        @include alpha-color(#000, .6, background);
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover {
+            color: #fff;
+            @include alpha-color(#000, .8, background);
+        }
+    }
+
+
+/*
+
+Captions
+
+    %caption                        # Used for the captions in .caption and modals
+
+Styleguide 32.4
+
+*/
+
+    %caption {
+        @include alpha-color(#000, .8, background);
+        color: #fff;
+        padding: $captions-padding;
+    }
+
+/*
+
+Labels (Badges & Pills)
+
+    %pill                           # For the .badge and .pill
+
+Styleguide 32.5
+
+*/
+
+    %pill {
+        @include alpha-color(#000, .35, background);
+        color: $white;
+    }
+
+/*
+
+Dropdowns
+
+    %dropdown                       # For the dropdown's list
+    %dropdown--open                 # For the drodpown button in .open state
+
+Styleguide 32.6
+
+*/
+
+
+
+    %dropdown {
+        background: $grayLighter;
+        border-color: $gray;
+
+        .divider { @include nav-divider($gray); margin-top: -1px }
+
+        > li > a,
+        > li > label { border-bottom: 1px dotted $gray; }
+
+        > li > a:hover,
+        > li > a:focus {
+            text-decoration: none;
+            background-color: $grayLight;
+        }
+    }
+
+    %dropdown--open {
+        background: $grayLighter;
+        border-bottom: 1px solid $grayLighter;
+    }
+
+
+/*
+
+Tables
+
+    %table--bordered                # For .table--bordered
+    %table--striped                 # For .table--striped
+    %table--hover                   # For .table--hover
+    %table--sortable                # For .table--sortable
+
+Styleguide 32.7
+
+*/
+
+
+
+    %table--bordered {
+        thead {
+            th, td {
+                background-color: $gray;
+                color: #FFF;
+            }
+        }
+        tbody {
+            td { border-bottom: 1px solid $grayLight; }
+        }
+    }
+
+    %table--striped { background-color: $grayLighter;}
+
+    %table--hover { background-color: $grayLighter;}
+
+    %table--sortable {
+        thead {
+            th {
+                &:hover {background: $grayDark }
+                &.sorting-asc:after {content: "\25BC"; }
+                &.sorting-desc:after {content: "\25B2";}
+            }
+        }
+    }
+
+/*
+
+Navs
+
+    %nav--btn                       # For links in navs with .nav--btn
+    %nav--btn__hover                # For the :hover state of %nav--btn
+    %nav--btn__current              # For the current selected link
+    %nav--btn__disabled             # For the disabled links
+
+Styleguide 32.8
+
+*/
+
+    %nav--btn {}
+
+    %nav--btn__hover { background-color: $grayLighter;}
+
+    %nav--btn__active {
+        color: $white;
+        background-color: $link-color;
+    }
+
+    %nav--btn__disabled {color: $grayLight;}
+
+
+/*
+
+Breadcrumbs
+
+    %breadcrumbs                     # Base style of breadcrumbs
+    %breadcrumbs__current            # For the current selected link
+
+Styleguide 32.9
+
+*/
+
+    %breadcrumbs {
+        > li {
+            &:after {
+                color: #ccc;
+                content: "›";
+                padding: 0 10px;
+            }
+            &:last-child {
+                &:after {
+                    content: "";
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+
+    %breadcrumbs__current { color: $grayLight; }
+
+/*
+
+Pagination
+
+    %pagination--btn                # For links in .pagination
+    %pagination--btn__hover         # For the :hover state of %pagination--btn
+    %pagination--btn__active        # For the :active  state of %pagination--btn
+    %pagination--btn__current       # For the current selected link
+    %pagination--btn__disabled      # For the disabled links
+
+Styleguide 32.10
+
+*/
+
+
+
+    %pagination--btn            { @extend %btn--default;  }
+    %pagination--btn__hover     { @extend %btn--default:hover;}
+    %pagination--btn__active    { }
+    %pagination--btn__current   { @extend %btn__current; }
+    %pagination--btn__disabled  { @extend %btn__disabled; }
+
+/*
+
+Pager
+
+    %pager--btn                     # For the links in .pager
+    %pager--btn__hover              # For the :hover state of %pager--btn
+    %pager--btn__active             # For the :active  state of %pager--btn
+    %pager--btn__disabled           # For the disabled links
+
+Styleguide 32.11
+
+*/
+
+    %pager--btn                 { @extend %btn--default; }
+    %pager--btn__hover          { }
+    %pager--btn__active         { }
+    %pager--btn__disabled       { @extend %btn__disabled; }
+
+/*
+
+Modals
+
+    %modal__btn                     # For all button links in modals
+    %modal__close                   # For the default close button
+    %modal__btnbar-size             # Width and height of #fancybox-buttons
+    %modal__overlay                 # Color of background overlay
+    %modal__skin                    # For the modal window
+    %modal__nav                     # For the Next and Prev buttons
+    %modal__caption                 # For the caption
+    %modal__loading                 # Position and style of the loading icon
+
+Styleguide 32.12
+
+*/
+
+    // Buttons
+
+    .btnPlay:after              { content: "▶" }
+    .btnPlayOn:after            { content: "‖" }
+    .btnToggle:after            { content: "◉" }
+    .btnToggleOn:after          { content: "⦿" }
+    .btnPrev:after              { content: "≪" }
+    .btnNext:after              { content: "≫" }
+    .btnClose:after             { content: "×" }
+    .fancybox-close:after       { content: "×" }
+
+    .fancybox-prev {
+      span:after   { content: "<" }
+    }
+
+    .fancybox-next {
+      span:after   { content: ">" }
+    }
+
+    %modal__btn {
+        @extend %btn--scripts;
+        @include square(em($modal-btn-size));
+        line-height: em($modal-btn-size);
+    }
+
+    %modal__close {
+        $offset: neg(em($modal-btn-size));
+        @include position(absolute, $offset .5em null null);
+        color: #CCCCCC;
+        &:hover {
+          color: #FFFFFF;
+        }
+    }
+
+    %modal__btnbar-size {
+      @include size((em($modal-btn-size) * 5) em($modal-btn-size));
+    }
+
+    // Other styles
+    %modal__overlay {
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiqAcAAIgAgoGu+rEAAAAASUVORK5CYII=');
+    }
+
+    %modal__skin {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        border-radius: $base-border-radius;
+        background: #fff;
+
+    }
+
+    %modal__nav { margin-top: (0 - (em($modal-btn-size) / 2)); }
+
+    %modal__caption { @extend %caption; }
+
+    %modal__loading {
+        margin-top: -($loader-ico-size / 2);
+        margin-left: -($loader-ico-size / 2);
+        @include opacity(.8);
+
+        div {
+            @extend %loader-ico;
+            @include square($loader-ico-size);
+
+        }
+    }
+
+
+/*
+
+Sliders
+
+    %slider__btn                    # For all button links in sliders
+    %slider__pager                  # For the single  links in the pager
+    %slider__caption                # For the caption
+    %slider__loading                # Position and style of the loading icon
+
+Styleguide 32.13
+
+*/
+
+    // Buttons
+    %slider__btn {
+        @extend %btn--scripts;
+        @include square(em($slider-btn-size));
+        line-height: em($slider-btn-size);
+        margin-top: neg((em($slider-btn-size) / 2));
+
+        &.bx-prev i:after { content: "<" }
+        &.bx-next i:after { content: ">" }
+    }
+
+    // Pager
+    %slider__pager {
+        @include position(absolute, null null -30px null);
+        padding-top: 20px;
+        .bx-pager-item {
+            a {
+                border-radius: 5px;
+                @include square(10px);
+                @include hide-text;
+                background: $grayLight;
+                margin: 0 5px;
+                &:hover, &.active { background: $gray; }
+            }
+        }
+    }
+
+    // Other styles
+    %slider__caption { @extend %caption; }
+
+    %slider__loading {
+        @extend %loader-ico;
+        @include alpha-color(#000, .60);
+        min-height: $loader-ico-size;
+    }
+
+/*
+
+Tabs
+
+    %tab__nav                       # For the tabs links container
+    %tab__btn                       # For the single tabs link
+    %tab__btn__hover                # For the :hover state of tabs link
+    %tab__btn__current              # For the current selected tab link
+    %tab__container                 # For the content continer
+
+Styleguide 32.14
+
+*/
+
+    %tab__nav { }
+
+    %tab__btn {
+        background: $grayLighter;
+        border: solid 1px $grayLight;
+        border-bottom: none;
+    }
+
+    %tab__btn__hover {
+        background: $grayLighter;
+        border: solid 1px $grayLight;
+        border-bottom: none;
+    }
+
+    %tab__btn__current {
+        border-color: $gray;
+        &:after { background: $grayLighter; }
+    }
+
+    %tab__container {
+        border: solid 1px $gray;
+        background: $grayLighter;
+    }
+
+
+/*
+
+Alerts
+
+    %alert                          # For all alert messages
+
+Styleguide 32.15
+
+*/
+
+    %alert {
+        background-color: $grayLighter;
+        border: 1px solid $grayLight;
+    }
+
+/*
+
+OffCanvas Nav
+
+    %nav--offcanvas                 # For the sidebar
+    %nav--offcanvas__dim            # For the dimming the content on menu open
+    %nav__toggle                    # For the toggle open/close button
+
+Styleguide 32.16
+
+*/
+
+
+    %nav--offcanvas {
+        background-color: $grayDark;
+        padding: em($wrapper-padding);
+        color: $white;
+
+        a {
+            color: $white;
+        }
+    }
+
+    %nav--offcanvas__dim {
+        background: rgba(0,0,0,0.2);
+    }
+
+    %nav--offcanvas__toggle {
+        @extend .btn;
+
+        span {
+            @extend .visuallyhidden;
+        }
+
+        &:before {
+            content: "≡"
+        }
+    }
+
+
+
+/*
+
+Overlays
+
+    %overlay__close                 # For the default close button
+
+    %overlay__content               # For styling the main content area
+    %overlay__content--open         # Animation for showing the content
+    %overlay__content--close        # Animation for hiding the content
+
+    %overlay__background            # Color of background overlay
+    %overlay__background--open      # Animation for showing the background
+    %overlay__background--close     # Animation for hiding the background
+
+Styleguide 32.17
+
+*/
+
+
+    %overlay__close {
+        @include position(absolute, 2em 2em null null);
+        color: #CCCCCC;
+        &:hover {
+          color: #FFFFFF;
+        }
+
+    }
+
+    %overlay__content {
+      color: $white;
+    }
+
+    %overlay__background {
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiqAcAAIgAgoGu+rEAAAAASUVORK5CYII=');
+    }
+
+    %overlay__content--open       { @extend .fadeInDown; }
+    %overlay__content--close      { @extend .fadeOutUp; }
+    %overlay__background--open    { @extend .fadeIn; }
+    %overlay__background--close   { @extend .fadeOut; }
+
+/*
+
+Shared
+
+Classes For other classes of generic elements
+
+    %caret                          # Side triangle For Dropdowns and Selects
+    %loader-ico                     # Generic loader icon For all scripts
+    %tooltip                        # Additional style for tooltips.
+                                      To change the colors see the 'colors' sections
+
+Styleguide 32.18
+
+*/
+
+    %caret {
+        &:after {
+          content: "▼"
+        }
+    }
+
+    %loader-ico {
+        background: url('//cdn.jsdelivr.net/wp-advanced-ajax-page-loader/2.5.12/loaders/SMALL%20-%20Spinning%20Arrows.gif') center center no-repeat;
+    }
+
+    %tooltip { }
