@@ -1,0 +1,49 @@
+{
+  "css": {
+    "source": "assets/sass/style.sass",
+    "target": "style.css"
+  },
+  "sprites": {
+    "source": "assets/images/s/*.png",
+    "target": "assets/images/sprites.png",
+    "stylesheet": "assets/sass/sprites.sass"
+  },
+  "js": {
+    "action": "uglify",
+    "sources": {
+      "ie": [
+        "bower_components/html5shiv/dist/html5shiv.js",
+        "bower_components/selectivizr/selectivizr.js",
+        "bower_components/respond/dest/respond.src.js",
+        "bower_components/pickadate/lib/legacy.js"
+      ],
+      "vendor": [
+        "bower_components/jquery/jquery.js",
+        "bower_components/bxSlider/jquery.bxslider.js",
+        "bower_components/easytabs/lib/jquery.easytabs.js",
+        "bower_components/fancybox/source/jquery.fancybox.js",
+        "bower_components/jquery-backstretch/jquery.backstretch.js",
+        "bower_components/jquery.dotdotdot/src/js/jquery.dotdotdot.js",
+        "bower_components/rapido/dist/js/rapido.js"
+      ],
+      "modernizr": [
+        "/modernizr/modernizr.js"
+      ],
+      "app": [
+        "assets/js/app.js"
+      ]
+    },
+    "target": {
+      "ie": "assets/js/ie.min.js",
+      "vendor": "assets/js/vendor.min.js",
+      "modernizr": "assets/js/modernizr.min.js",
+      "app": "assets/js/app.min.js"
+    }
+  },
+  "livescript": {
+    "sources": [
+      "assets/js/app.ls"
+    ],
+    "target": "assets/js/app.min.js"
+  }
+}

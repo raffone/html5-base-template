@@ -1,63 +1,58 @@
 module.exports = function(grunt) {
+  require('time-grunt')(grunt);
 
-  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-livescript');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-contrib-sass');
-
-  var options = {
-    IE: [
-    'bower_components/html5shiv/dist/html5shiv.js',
-    'bower_components/selectivizr/selectivizr.js',
-    'bower_components/respond/dest/respond.src.js',
-    'bower_components/pickadate/lib/legacy.js'
-  ], VENDOR: [
-    'bower_components/jquery/jquery.js',
-    'bower_components/bxSlider/jquery.bxslider.js',
-    'bower_components/easytabs/lib/jquery.easytabs.js',
-    'bower_components/fancybox/source/jquery.fancybox.js',
-    'bower_components/jquery-backstretch/jquery.backstretch.js',
-    'bower_components/jquery.dotdotdot/src/js/jquery.dotdotdot.js',
-    'bower_components/rapido/dist/js/rapido.js',
-  ], MODERNIZR: [
-    'teamofdrivers/static/js/vendor/modernizr/modernizr.js'
-  ], APP: [
-    'assets/js/app.js'
-  ]};
+  grunt.loadNpmTasks('grunt-spritesmith');
 
   grunt.initConfig({
 
+    project: grunt.file.readJSON("project.json"),
+
     sass: {
-      min: {
+      dist: {
         options: {
           style: 'compressed',
           require: ['sass-globbing', 'sass-media_query_combiner']
         },
         files: {
-          'assets/css/style.css': 'assets/sass/style.sass',
+          '<%= project.css.target %>': '<%= project.css.source %>'
         }
+      }
+    },
+
+    sprite: {
+      dist: {
+        src: '<%= project.sprites.source %>',
+        destImg: '<%= project.sprites.target %>',
+        destCSS: '<%= project.sprites.stylesheet %>',
+        'cssTemplate': 'bower_components/rapido/sprites/rapido.template.mustache',
+        'cssVarMap': function (sprite) {
+          sprite.name = 's-' + sprite.name;
+        },
       }
     },
 
     concat: {
       ie: {
-        src: options.IE,
-        dest: 'assets/js/ie.min.js'
+        src: ['<%= project.js.sources.ie %>'],
+        dest: '<%= project.js.target.ie %>'
       },
       vendor: {
-        src: options.VENDOR,
-        dest: 'assets/js/vendor.min.js'
+        src: ['<%= project.js.sources.vendor %>'],
+        dest: '<%= project.js.target.vendor %>'
       },
       modernizr: {
-        src: options.MODERNIZR,
-        dest: 'assets/js/modernizr.min.js'
+        src: ['<%= project.js.sources.modernizr %>'],
+        dest: '<%= project.js.target.modernizr %>'
       },
       app: {
-        src: options.APP,
-        dest: 'assets/js/app.min.js'
+        src: ['<%= project.js.sources.app %>'],
+        dest: '<%= project.js.target.app %>'
       }
     },
 
@@ -67,30 +62,73 @@ module.exports = function(grunt) {
           except: ['jQuery']
         },
       },
-      all: {
+      dist: {
         files: {
-          'assets/js/ie.min.js': options.IE,
-          'assets/js/vendor.min.js': options.VENDOR,
-          'assets/js/modernizr.min.js': options.MODERNIZR,
-          'assets/js/app.min.js': options.APP
+          '<%= project.js.target.ie %>': ['<%= project.js.sources.ie %>'],
+          '<%= project.js.target.vendor %>': ['<%= project.js.sources.vendor %>'],
+          '<%= project.js.target.modernizr %>': ['<%= project.js.sources.modernizr %>'],
+          '<%= project.js.target.app %>': ['<%= project.js.sources.app %>']
         }
       }
+    },
+
+    livescript: {
+      options: {
+        bare: true,
+      },
+      dist: {
+        files: {
+          '<%= project.livescript.target %>': '<%= project.livescript.sources %>',
+        }
+      }
+    },
+
+    notify: {
+      sass: {
+        options: {
+          message: 'Sass compiled',
+        }
+      },
+      js: {
+        options: {
+          message: 'Javascript changed',
+        }
+      },
+      ls: {
+        options: {
+          message: 'LiveScript compiled',
+        }
+      },
+      template: {
+        options: {
+          message: 'Template changed',
+        }
+      },
     },
 
     watch: {
       options: {
         livereload: true
       },
-      css: {
-        files: ['**/*.sass', '**/*.scss', '**/*.png' ],
-        tasks: ['sass']
+      sass: {
+        files: ['**/*.sass', '**/*.scss'],
+        tasks: ['sass', 'notify:sass']
       },
-      php: {
-        files: ['*.php', '*.html', '**/*.php', '**/*.html' ]
+      sprites: {
+        files: ['**/*.png'],
+        tasks: ['sprite', 'sass', 'notify:sass']
       },
       js: {
-        files: ['assets/js/app.js' ],
-        tasks: ['uglify']
+        files: ['<%= project.js.sources.app %>'],
+        tasks: ['<%= project.js.action %>', 'notify:js']
+      },
+      ls: {
+        files: ['<%= project.livescript.sources %>'],
+        tasks: ['livescript', 'notify:ls']
+      },
+      template: {
+        files: ['*.php', '*.html', '**/*.php', '**/*.html'],
+        tasks: ['notify:template']
       },
     },
   });
