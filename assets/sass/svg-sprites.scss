@@ -1,0 +1,35 @@
+%svg {
+	background-repeat: no-repeat;
+	background-image: url(../images/svg-sprites.svg);
+}
+
+.svg-cake {
+	background-position: 0 0;
+	@extend %svg;
+}
+
+.svg-cake-dims {
+	width: 133px;
+	height: 110.666px;
+}
+
+.svg-croissant {
+	background-position: 0 -111px;
+	@extend %svg;
+}
+
+.svg-croissant-dims {
+	width: 122.819px;
+	height: 91.798px;
+}
+
+.svg-pie {
+	background-position: 0 -203px;
+	@extend %svg;
+}
+
+.svg-pie-dims {
+	width: 125.775px;
+	height: 84.833px;
+}
+
