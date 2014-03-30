@@ -1,10 +1,8 @@
 {
-  "active_modules": [
+  "modules": [
     "sass",
-    "sprite",
-    "svgsprite",
-    "svg2png",
-    "uglify"
+    "uglify",
+    "sprite"
   ],
   "js": {
     "sources": {
