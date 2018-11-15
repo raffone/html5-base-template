@@ -2,7 +2,8 @@
   "modules": [
     "sass",
     "uglify",
-    "sprite"
+    "sprite",
+    "svgsprite"
   ],
   "js": {
     "sources": {

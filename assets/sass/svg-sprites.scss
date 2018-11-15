@@ -3,8 +3,38 @@
 	background-image: url(../images/svg-sprites.svg);
 }
 
-.svg-cake {
+.svg-analitics {
 	background-position: 0 0;
+	@extend %svg;
+}
+
+.svg-analitics-dims {
+	width: 50px;
+	height: 50px;
+}
+
+.svg-anda {
+	background-position: 0 -50px;
+	@extend %svg;
+}
+
+.svg-anda-dims {
+	width: 50px;
+	height: 50px;
+}
+
+.svg-attachment {
+	background-position: 0 -100px;
+	@extend %svg;
+}
+
+.svg-attachment-dims {
+	width: 50px;
+	height: 50px;
+}
+
+.svg-cake {
+	background-position: 0 -150px;
 	@extend %svg;
 }
 
@@ -14,7 +44,7 @@
 }
 
 .svg-croissant {
-	background-position: 0 -111px;
+	background-position: 0 -261px;
 	@extend %svg;
 }
 
@@ -24,7 +54,7 @@
 }
 
 .svg-pie {
-	background-position: 0 -203px;
+	background-position: 0 -353px;
 	@extend %svg;
 }
 
